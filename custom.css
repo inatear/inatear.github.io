@@ -2,6 +2,15 @@
 body {
     font-family: 'Noto Sans TC', sans-serif;
 }
+:root {
+    --gap: 24px;
+    --radius: 8px;
+    --entry: #fff;
+}
+.dark {
+    --theme: #2c2c2c;
+    --entry: #414141;
+}
 .taxonomy-entry {
     position: relative;
     margin-bottom: var(--gap);
@@ -12,4 +21,27 @@ body {
 }
 .taxonomy-entry:active {
     transform: scale(0.96);
+}
+
+.fa,.fab,.fal,.far,.fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1
+}
+.fa-2x {
+    font-size:2em
+}
+.fa-rocket:before {
+    content: "\1F41F";
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    display:inline-block
 }
