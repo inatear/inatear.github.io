@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 鹹魚部落格</title>
+    <link>https://inatear.github.io/tags/</link>
+    <description>Recent content in Tags on 鹹魚部落格</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-tw</language>
+    <managingEditor>tear.chen@gmail.com (鹹魚)</managingEditor>
+    <webMaster>tear.chen@gmail.com (鹹魚)</webMaster>
+    <lastBuildDate>Sat, 30 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://inatear.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://inatear.github.io/tags/hugo/</link>
+      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
+      <author>tear.chen@gmail.com (鹹魚)</author>
+      <guid>https://inatear.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>教學</title>
+      <link>https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/</link>
+      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
+      <author>tear.chen@gmail.com (鹹魚)</author>
+      <guid>https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>部落格</title>
+      <link>https://inatear.github.io/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/</link>
+      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
+      <author>tear.chen@gmail.com (鹹魚)</author>
+      <guid>https://inatear.github.io/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,15 @@
+/* Place a custom css file in your own project to use this. */
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+.taxonomy-entry {
+    position: relative;
+    margin-bottom: var(--gap);
+    padding: var(--gap);
+    background: var(--entry);
+    border-radius: var(--radius);
+    transition: transform 0.1s;
+}
+.taxonomy-entry:active {
+    transform: scale(0.96);
+}

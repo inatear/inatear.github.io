@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-tw">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>部落格 - 鹹魚部落格</title>
+    
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300&display=swap" rel="stylesheet">
+    <link href="https://inatear.github.io/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://inatear.github.io/style.css" rel="stylesheet">
+    <link href="https://inatear.github.io/custom.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://inatear.github.io/apple-touch-icon.png">
+    <link rel="icon" href="https://inatear.github.io/favicon.ico">
+    <meta name="generator" content="Hugo 0.71.1" />
+    
+    <link rel="alternate" type="application/rss+xml" href="https://inatear.github.io/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/index.xml" title="鹹魚部落格" />
+    
+    
+    <script>
+      function setTheme() {
+        const time = new Date();
+
+        const prev = localStorage.getItem('date');
+        const date = String(time.getMonth() + 1) + '.' + String(time.getDate());
+
+        const now = time.getTime();
+        let sunrise;
+        let sunset;
+
+        function setBodyClass() {
+          if (now > sunrise && now < sunset) return;
+          document.body.classList.add('dark');
+        }
+
+        if (date !== prev) {
+          fetch('https://api.ipgeolocation.io/astronomy?apiKey=5ed37d85103e4defa5df4c5298ed5215')
+            .then(res => res.json())
+            .then(data => {
+              sunrise = data.sunrise.split(':').map(Number);
+              sunset = data.sunset.split(':').map(Number);
+            })
+            .catch(() => {
+              sunrise = [7, 0];
+              sunset = [19, 0];
+            })
+            .finally(() => {
+              sunrise = time.setHours(sunrise[0], sunrise[1], 0);
+              sunset = time.setHours(sunset[0], sunset[1], 0);
+              setBodyClass();
+              localStorage.setItem('sunrise', sunrise);
+              localStorage.setItem('sunset', sunset);
+            });
+          localStorage.setItem('date', date);
+        } else {
+          sunrise = Number(localStorage.getItem('sunrise'));
+          sunset = Number(localStorage.getItem('sunset'));
+          setBodyClass();
+        }
+      }
+    </script>
+  </head>
+  <body class="list">
+    <script>
+      setTheme();
+    </script>
+    <header class="header">
+      <nav class="nav">
+        <p class="logo"><a href="https://inatear.github.io/">鹹魚部落格</a></p>
+        <ul class="menu">
+          <li>
+            <a href="/posts/">Posts</a>
+          </li>
+          <li>
+            <a href="/categories/">Categories</a>
+          </li>
+          <li>
+            <a href="/tags/">Tags</a>
+          </li>
+          <li>
+            <a href="/about/">About</a>
+          </li>
+          <li>
+            <a href=""></a>
+          </li>
+          <li>
+            <a href=""></a>
+          </li>
+          <li>
+            <a href=""></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+
+<header class="page-header"><h1>部落格</h1></header>
+
+
+
+<article class="post-entry">
+    <header class="entry-header">
+        <a href="https://inatear.github.io/posts/tech/109-05-30_buildhugo/">Github &#43; Hugo</a>
+    </header>
+    <section class="entry-content">
+        <p>建立步驟摘要 申請Github帳號，建立網站的repository。 到Hugo網站選擇...</p>
+    </section>
+    <footer class="entry-footer">
+      <time>May 2020</time>
+    </footer>
+</article>
+</main>
+<footer class="footer">
+  <span>&copy; 2020 <a href="https://inatear.github.io/">鹹魚部落格</a></span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+</footer>
+<script src="https://inatear.github.io/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>鹹魚部落格</title>
+    <link>https://inatear.github.io/</link>
+    <description>Recent content on 鹹魚部落格</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-tw</language>
+    <managingEditor>tear.chen@gmail.com (鹹魚)</managingEditor>
+    <webMaster>tear.chen@gmail.com (鹹魚)</webMaster>
+    <lastBuildDate>Sat, 30 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://inatear.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Github &#43; Hugo</title>
+      <link>https://inatear.github.io/posts/tech/109-05-30_buildhugo/</link>
+      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
+      <author>tear.chen@gmail.com (鹹魚)</author>
+      <guid>https://inatear.github.io/posts/tech/109-05-30_buildhugo/</guid>
+      <description>建立步驟摘要 申請Github帳號，建立網站的repository。 到Hugo網站選擇</description>
+    </item>
+    
+    <item>
+      <title>關於魚</title>
+      <link>https://inatear.github.io/about/</link>
+      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
+      <author>tear.chen@gmail.com (鹹魚)</author>
+      <guid>https://inatear.github.io/about/</guid>
+      <description>一隻鹹魚。 隨著時間過去，慢慢風乾。 即便回到大海，也只是屍體，無法自由自在悠游。</description>
+    </item>
+    
+  </channel>
+</rss>
