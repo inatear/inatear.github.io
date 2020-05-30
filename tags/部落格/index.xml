@@ -6,8 +6,6 @@
     <description>Recent content in 部落格 on 鹹魚部落格</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-tw</language>
-    <managingEditor>tear.chen@gmail.com (鹹魚)</managingEditor>
-    <webMaster>tear.chen@gmail.com (鹹魚)</webMaster>
     <lastBuildDate>Sat, 30 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://inatear.github.io/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/index.xml" rel="self" type="application/rss+xml" />
@@ -17,9 +15,9 @@
       <title>Github &#43; Hugo</title>
       <link>https://inatear.github.io/posts/tech/109-05-30_buildhugo/</link>
       <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
-      <author>tear.chen@gmail.com (鹹魚)</author>
+      
       <guid>https://inatear.github.io/posts/tech/109-05-30_buildhugo/</guid>
-      <description>建立步驟摘要 申請Github帳號，建立網站的repository。 到Hugo網站選擇</description>
+      <description>架設個人網站步驟說明 建立Github環境 申請Github帳號，通過驗證後，在Gith</description>
     </item>
     
   </channel>
