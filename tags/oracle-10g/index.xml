@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>教學 on 鹹魚部落格</title>
-    <link>https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/</link>
-    <description>Recent content in 教學 on 鹹魚部落格</description>
+    <title>Oracle 10g on 鹹魚部落格</title>
+    <link>https://inatear.github.io/tags/oracle-10g/</link>
+    <description>Recent content in Oracle 10g on 鹹魚部落格</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-tw</language>
     <lastBuildDate>Sun, 31 May 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://inatear.github.io/tags/oracle-10g/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://inatear.github.io/posts/tech/109-05-31_toad2oracle10g/</guid>
       <description>原先使用Windows7升級到Windows10的作業系統，只要安裝Oracle Cl</description>
-    </item>
-    
-    <item>
-      <title>Github &#43; Hugo</title>
-      <link>https://inatear.github.io/posts/tech/109-05-30_buildhugo/</link>
-      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://inatear.github.io/posts/tech/109-05-30_buildhugo/</guid>
-      <description>架設個人網站步驟說明 建立Github環境 申請Github帳號，通過驗證後，在Gith</description>
     </item>
     
   </channel>
