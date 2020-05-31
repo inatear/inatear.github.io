@@ -97,54 +97,70 @@
   </header>
   <div class="post-content"><h1 id="架設個人網站步驟說明">架設個人網站步驟說明</h1>
 <h2 id="建立github環境">建立Github環境</h2>
-<p>申請Github帳號，通過驗證後，在Github首頁右上方點＋，點選add repository。</p>
+<p>申請Github帳號，通過驗證後，在Github首頁右上方點＋，點選〔add repository〕。</p>
 <p><img src="/media/20200530-04.png" alt="20200530-04"></p>
 <p>repository name需設定與Github帳號相同，如：owner.github.io。這個repository就是未來要放置網站程式的地方。</p>
 <p><img src="/media/20200530-01.png" alt=""></p>
-<h2 id="建立本地hugo環境">建立本地Hugo環境</h2>
-<p>到 <a href="https://gohugo.io/">Hugo</a> 網站首頁，拉到最下面，點擊連結「See the Getting Started Guide for other methods. 」，有提供不同環境的安裝說明。</p>
+<h2 id="建立本機hugo環境">建立本機Hugo環境</h2>
+<p>到 <a href="https://gohugo.io/">Hugo</a> 網站首頁，拉到最下面，點擊連結 <a href="https://gohugo.io/getting-started/installing/">See the Getting Started Guide for other methods. </a>，有提供不同作業環境的安裝說明。</p>
 <p><img src="/media/20200530-03.png" alt="20200530-03"></p>
 <p>若是在Windows環境下，建議為Hugo建立工作目錄，如D:\Hugo，其下建立兩個子目錄bin與Sites，分類放置執行檔與網站程式。</p>
-<p>接著到 <a href="https://github.com/gohugoio/hugo/releases">HugoReleases</a> 下載Windows環境的壓縮檔，解壓縮後把Hugo.exe放到D:\Hugo\bin目錄下。並到Windows環境變數設定PATH，把D:\Hugo\bin目錄加上去，之後不管在哪個目錄下，都可以執行這個exe檔。</p>
+<p>接著到 <a href="https://github.com/gohugoio/hugo/releases">HugoReleases</a> 下載Windows環境的hugo_extended_Windows-64bit壓縮檔，解壓縮後把Hugo.exe放到D:\Hugo\bin目錄下。並到Windows環境變數設定PATH，把D:\Hugo\bin目錄加上去，之後不管在哪個目錄下，都可以執行這個exe檔。</p>
 <h2 id="選擇hugo主題theme">選擇Hugo主題(theme)</h2>
-<p>到 <a href="https://gohugo.io/">Hugo</a> 網站選擇主題(theme)，要注意有些主題不支援標籤(Tags)、分類(Categories)、評論(Disqus)及Google analytics等功能，需要自己客製化，若暫時沒有網頁設計基礎，就儘量選擇版面已有支援的，避免耗費時間進行人工調整。</p>
-<p>選擇好了以後，點擊download按鈕，進入該主題的github區，直接選擇Download Zip下載zip檔。</p>
+<p>到 <a href="https://gohugo.io/">Hugo</a> 網站選擇喜歡的主題(theme)，要注意有些主題不支援標籤(Tags)、分類(Categories)、評論(Disqus)及Google analytics等功能，需要自己客製化，若暫時沒有網頁設計基礎，就儘量選擇版面已有支援的，避免耗費時間進行人工調整。</p>
+<p>選擇好了以後，點擊〔download〕按鈕，進入該主題的github區，直接選擇〔Download Zip〕下載zip檔。</p>
 <p><img src="/media/20200530-02.png" alt="20200530-02"></p>
 <p>或依主題的網頁說明，在網站根目錄，例如D:\Hugo\Sites\myblog目錄下，用指令clone到本機。</p>
 <pre><code>cd D:\Hugo\Sites\myblog
 git init
 git clone https://github.com/nanxiaobei/hugo-paper themes/paper
 </code></pre><p>一般而言，主題目錄themes/paper下會有一個exampleSite目錄，可以將裡面的檔案複製到D:\Hugo\Sites\myblog目錄下，這其中會包含一個設定檔config.toml。</p>
-<p>有些主題不會提供這個目錄，需自己建立，或延用其它主題的設定檔。</p>
+<p>有些主題不會提供這個目錄，需自己建立，或沿用其它主題的設定檔。</p>
 <h2 id="安裝網站開發環境ide">安裝網站開發環境(IDE)</h2>
-<p>至 <a href="https://code.visualstudio.com/">Visual Studio Code</a> 下載Windows安裝檔，安裝Visual Studio Code。安裝完成後開啟選單File/Open folder&hellip;開啟D:\Hugo\Sites\myblog，開始修改config.toml進行主題客製化設定：</p>
+<p>至 <a href="https://code.visualstudio.com/">Visual Studio Code</a> 下載Windows安裝檔，安裝Visual Studio Code。</p>
+<p>安裝完成後開啟選單〔File/Open folder&hellip;〕開啟D:\Hugo\Sites\myblog，開始修改config.toml進行主題客製化設定：</p>
 <ol>
 <li>修改baseURL為owner.github.io。</li>
 <li>修改title為自己的部落格名稱。</li>
 <li>修改theme為剛才下載的主題名稱，若不知道可以到themes目錄下查看。</li>
 </ol>
 <h2 id="測試hugo網站">測試Hugo網站</h2>
-<p>在Visual Studio Code環境下，開啟選單Terminal/New Terminal，輸入hugo server。</p>
+<p>在Visual Studio Code環境下，開啟選單〔Terminal/New Terminal〕，輸入hugo server。</p>
 <p><img src="/media/20200530-05.png" alt="20200530-05"></p>
-<p>正常情況下，會出現以下訊息：</p>
+<p>正常情況下，幾秒內就會出現以下訊息：</p>
 <pre><code>Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
 Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 </code></pre><p>用瀏覽器開啟 http://localhost:1313/ 即可瀏覽網站。</p>
-<p>在不正常的情況下，程式沒有回應，此時需按Terminal右上方的×，且開啟工作管理員確保Hugo.exe已經執行結束，若還在就強制結束工作，再開啟Terminal重新操作，有時需要好幾次，尚不明原因。</p>
+<p><strong>在不正常的情況下，程式沒有回應，此時需按Terminal右上方的×，且開啟工作管理員確保Hugo.exe已經執行結束，若還在就強制結束工作，再開啟Terminal重新操作，有時需要好幾次，尚不明原因。</strong></p>
 <h2 id="產生hugo靜態網頁">產生Hugo靜態網頁</h2>
-<p>若確認網站沒有問題，在Visual Studio Code環境下，開啟選單Terminal/New Terminal，輸入hugo，即可產生實體靜態網頁於D:\Hugo\Sites\myblog\publish目錄下，這個目錄就是Hugo經由使用者修改設定後產生的靜態網頁。</p>
+<p>確認網站呈現出來的結果是自己想要的後，在Visual Studio Code環境下，開啟選單〔Terminal/New Terminal〕，輸入hugo，即可產生實體靜態網頁於D:\Hugo\Sites\myblog\publish目錄下，這個目錄就是Hugo讀取使用者修改後的設定所產生的靜態網頁。</p>
+<pre><code>PS D:\Hugo\Sites\myblog&gt; hugo
+Building sites … 
+                   | EN  
+-------------------+-----
+  Pages            | 20
+  Paginator pages  |  0
+  Non-page files   |  0
+  Static files     | 13
+  Processed images |  0
+  Aliases          |  2
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Total in 120 ms
+</code></pre><p><strong>同上，正常情況下幾秒內就會完成，出現如上訊息，但程式會常常沒有回應，需重新操作。</strong></p>
 <h2 id="同步github完成佈署">同步Github完成佈署</h2>
 <p>至 <a href="https://desktop.github.com/">GitHub Desktop</a> 下載Windows安裝檔，安裝完成後，登入github帳號，就可以先把owner.github.io這個repository clone到本機，預設是在C:\Users\登入帳號\Documents\GitHub目錄下，會看到一個名為owner.github.io目錄。請注意執行clone時，owner.github.io目錄必須是空的。</p>
-<p>接著把D:\Hugo\Sites\myblog\publish目錄中的檔案，複製到C:\Users\登入帳號\Documents\GitHub\owner.github.io目錄下。然後在GitHub Desktop中，應該會出現偵測這個目錄有被更動檔案(changed files)，輸入commit的summary後，按commit to master。</p>
-<p>最後按Publish branch，把更動的檔案上傳到GitHub上。</p>
-<p>第一次佈署完成後，通常要過一段時間，連結 <a href="https://owner.github.io">https://owner.github.io</a> 首頁才會完整顯示，有時需等上半小時，原因不明。</p>
+<p>接著把D:\Hugo\Sites\myblog\publish目錄中的檔案，複製到C:\Users\登入帳號\Documents\GitHub\owner.github.io目錄下。然後在GitHub Desktop中，應該會出現有偵測到這個目錄有被更動檔案(changed files)的訊息，輸入commit的summary後，按〔commit to master〕。</p>
+<p>最後按上方的〔Publish branch〕，把更動的檔案上傳到GitHub上。</p>
+<p><strong>第一次佈署完成後，通常要經過一段時間，連結 <a href="https://owner.github.io">https://owner.github.io</a> 首頁才會完整顯示，有時需等上半小時，原因不明。</strong></p>
 <h2 id="troubleshooting">TroubleShooting</h2>
 <ol>
-<li>明明已經更新檔案了，GitHub Desktop卻沒有偵測到，這時最快的做法，就是把GitHub的repository刪掉重建。</li>
+<li>明明已經更新檔案了，GitHub Desktop卻沒有偵測到，這時（我的）最快做法，就是把GitHub的repository刪掉重建。</li>
 <li>使用google fonts字型，有時在本機上是看不到效果的，需要放到GitHub上測試。</li>
-<li>網站的文章出現404，但是本機上是沒有的，檢查一下是不是複製錯目錄，應該是publish，若是誤將myblog整個目錄複製蓋上去，那就只好刪掉重建。</li>
-<li>不要直接修改theme底下的檔案，若該檔案在myblog的目錄下也有，優先修改myblog目錄下的檔案。</li>
+<li>點擊網站的文章(post)出現404，但是在本機上測試時是正常的，檢查一下是不是複製錯目錄，應該是publish裡面的檔案，若是誤將myblog整個目錄複製蓋上去，那就只好刪掉重建（可能不用，但我還沒學會在github上還原上一個版本）。</li>
+<li>不要直接修改theme底下的檔案，若該檔案在myblog的目錄下也有，優先修改myblog目錄下的檔案；否則常常改完了沒有生效，之後才發現改錯檔了。</li>
 </ol>
 </div>
   <footer class="post-footer">
