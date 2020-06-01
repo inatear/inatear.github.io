@@ -6,10 +6,19 @@
     <description>Recent content on 鹹魚部落格</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-tw</language>
-    <lastBuildDate>Sun, 31 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://inatear.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>109-06-01</title>
+      <link>https://inatear.github.io/posts/diary/109-06-01/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/posts/diary/109-06-01/</guid>
+      <description>時序進入到了六月 。 在練習如何將自己的簡歷轉化成時間軸時，突然意識到出社會已經二十年了</description>
+    </item>
     
     <item>
       <title>如何設定讓Toad連到oracle 10g資料庫</title>

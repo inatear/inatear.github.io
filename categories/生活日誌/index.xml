@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>生活日誌 on 鹹魚部落格</title>
+    <link>https://inatear.github.io/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AA%8C/</link>
+    <description>Recent content in 生活日誌 on 鹹魚部落格</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-tw</language>
+    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://inatear.github.io/categories/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AA%8C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>109-06-01</title>
+      <link>https://inatear.github.io/posts/diary/109-06-01/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/posts/diary/109-06-01/</guid>
+      <description>時序進入到了六月 。 在練習如何將自己的簡歷轉化成時間軸時，突然意識到出社會已經二十年了</description>
+    </item>
+    
+  </channel>
+</rss>
