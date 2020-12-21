@@ -32,10 +32,15 @@
         const now = time.getTime();
         let sunrise;
         let sunset;
+        let isDarkTheme = false;
 
         function setBodyClass() {
-          if (now > sunrise && now < sunset) return;
+          if (now > sunrise && now < sunset) {
+            isDarkTheme = false;
+            return;
+          }
           document.body.classList.add('dark');
+          isDarkTheme = true;
         }
 
         if (date !== prev) {

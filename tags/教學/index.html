@@ -32,10 +32,15 @@
         const now = time.getTime();
         let sunrise;
         let sunset;
+        let isDarkTheme = false;
 
         function setBodyClass() {
-          if (now > sunrise && now < sunset) return;
+          if (now > sunrise && now < sunset) {
+            isDarkTheme = false;
+            return;
+          }
           document.body.classList.add('dark');
+          isDarkTheme = true;
         }
 
         if (date !== prev) {
@@ -93,6 +98,42 @@
 <header class="page-header"><h1>教學</h1></header>
 
 
+
+<article class="post-entry">
+    <header class="entry-header">
+        <a href="https://inatear.github.io/posts/tech/109-12-21_installpostgresql/">如何在Win10啟動正常PostgreSQL</a>
+    </header>
+    <section class="entry-content">
+        <p>在Win10安裝PostgreSQL 10.15-1後，無法正常啟動 不要安裝在Prog...</p>
+    </section>
+    <footer class="entry-footer">
+      <time>2020-12-21</time>
+    </footer>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <a href="https://inatear.github.io/posts/tech/109-12-21_installcodimd/">安裝CodiMD 2.2.0</a>
+    </header>
+    <section class="entry-content">
+        <p>在CentOS 8上安裝CodiMD 2.2.0 CodiMD分新舊版 舊版在github https://github.com/hackmdio/codimd 新版需另...</p>
+    </section>
+    <footer class="entry-footer">
+      <time>2020-12-21</time>
+    </footer>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <a href="https://inatear.github.io/posts/tech/109-12-21_setproxyserver/">設定Apache Web Server Proxy功能</a>
+    </header>
+    <section class="entry-content">
+        <p>設定Apache Web Server Proxy功能 安裝apache web server yum -y install httpd httpd-tools 安裝並啟動apach...</p>
+    </section>
+    <footer class="entry-footer">
+      <time>2020-12-21</time>
+    </footer>
+</article>
 
 <article class="post-entry">
     <header class="entry-header">

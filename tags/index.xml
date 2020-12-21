@@ -6,10 +6,82 @@
     <description>Recent content in Tags on 鹹魚部落格</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-tw</language>
-    <lastBuildDate>Fri, 05 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://inatear.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Apache</title>
+      <link>https://inatear.github.io/tags/apache/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/tags/apache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CentOS</title>
+      <link>https://inatear.github.io/tags/centos/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CodiMD</title>
+      <link>https://inatear.github.io/tags/codimd/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/tags/codimd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>httpd</title>
+      <link>https://inatear.github.io/tags/httpd/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/tags/httpd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL</title>
+      <link>https://inatear.github.io/tags/postgresql/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/tags/postgresql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://inatear.github.io/tags/web/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Win10</title>
+      <link>https://inatear.github.io/tags/win10/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/tags/win10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>教學</title>
+      <link>https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>工作</title>
@@ -44,15 +116,6 @@
       <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://inatear.github.io/tags/toad/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>教學</title>
-      <link>https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/</link>
-      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/</guid>
       <description></description>
     </item>
     

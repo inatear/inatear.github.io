@@ -32,10 +32,15 @@
         const now = time.getTime();
         let sunrise;
         let sunset;
+        let isDarkTheme = false;
 
         function setBodyClass() {
-          if (now > sunrise && now < sunset) return;
+          if (now > sunrise && now < sunset) {
+            isDarkTheme = false;
+            return;
+          }
           document.body.classList.add('dark');
+          isDarkTheme = true;
         }
 
         if (date !== prev) {
@@ -92,39 +97,39 @@
 
 <article class="first-entry">
   <header class="entry-header">
-    <h2>備份啊備份</h2>
+    <h2>如何在Win10啟動正常PostgreSQL</h2>
   </header>
   <section class="entry-content">
-   <p>為新買的ZenBook買了備份硬碟。 之前在MacBook Air上吃到苦頭，莫名其妙螢...</p>
+   <p>在Win10安裝PostgreSQL 10.15-1後，無法正常啟動 不要安裝在Prog...</p>
   </section>
   <footer class="entry-footer">
-    <time>2020-06-05</time>
+    <time>2020-12-21</time>
   </footer>
-  <a class="entry-link" href="https://inatear.github.io/posts/diary/109-06-05/"></a>
+  <a class="entry-link" href="https://inatear.github.io/posts/tech/109-12-21_installpostgresql/"></a>
 </article>
 <article class="post-entry">
   <header class="entry-header">
-    <h2>但願自在</h2>
+    <h2>安裝CodiMD 2.2.0</h2>
   </header>
   <section class="entry-content">
-   <p>一起和新職位的前輩吃了午飯。 一直好奇為何總是外面的人比我們裡面先知道人事異動。閒聊後...</p>
+   <p>在CentOS 8上安裝CodiMD 2.2.0 CodiMD分新舊版 舊版在github https://github.com/hackmdio/codimd 新版需另...</p>
   </section>
   <footer class="entry-footer">
-    <time>2020-06-04</time>
+    <time>2020-12-21</time>
   </footer>
-  <a class="entry-link" href="https://inatear.github.io/posts/diary/109-06-04/"></a>
+  <a class="entry-link" href="https://inatear.github.io/posts/tech/109-12-21_installcodimd/"></a>
 </article>
 <article class="post-entry">
   <header class="entry-header">
-    <h2>問心，無愧</h2>
+    <h2>設定Apache Web Server Proxy功能</h2>
   </header>
   <section class="entry-content">
-   <p>終於把待辦事項在郵件匣裡清空了；並非辦畢，而是交接到別的同仁身上。 我要離開了，而目前...</p>
+   <p>設定Apache Web Server Proxy功能 安裝apache web server yum -y install httpd httpd-tools 安裝並啟動apach...</p>
   </section>
   <footer class="entry-footer">
-    <time>2020-06-03</time>
+    <time>2020-12-21</time>
   </footer>
-  <a class="entry-link" href="https://inatear.github.io/posts/diary/109-06-03/"></a>
+  <a class="entry-link" href="https://inatear.github.io/posts/tech/109-12-21_setproxyserver/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

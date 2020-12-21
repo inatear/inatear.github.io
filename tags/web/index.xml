@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on 鹹魚部落格</title>
+    <link>https://inatear.github.io/tags/web/</link>
+    <description>Recent content in Web on 鹹魚部落格</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-tw</language>
+    <lastBuildDate>Mon, 21 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://inatear.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>設定Apache Web Server Proxy功能</title>
+      <link>https://inatear.github.io/posts/tech/109-12-21_setproxyserver/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/posts/tech/109-12-21_setproxyserver/</guid>
+      <description>設定Apache Web Server Proxy功能 安裝apache web server yum -y install httpd httpd-tools 安裝並啟動apach</description>
+    </item>
+    
+  </channel>
+</rss>

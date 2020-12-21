@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-tw">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>如何在Win10啟動正常PostgreSQL - 鹹魚部落格</title>
+    
+    <meta name="description" content="在Win10安裝PostgreSQL 10.15-1後，無法正常啟動 不要安裝在Prog">
+    <meta name="author" content="一隻鹹魚">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300&display=swap" rel="stylesheet">
+    <link href="https://inatear.github.io/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://inatear.github.io/style.css" rel="stylesheet">
+    <link href="https://inatear.github.io/custom.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://inatear.github.io/apple-touch-icon.png">
+    <link rel="icon" href="https://inatear.github.io/favicon.ico">
+    <meta name="generator" content="Hugo 0.71.1" />
+    
+    
+    
+    <script>
+      function setTheme() {
+        const time = new Date();
+
+        const prev = localStorage.getItem('date');
+        const date = String(time.getMonth() + 1) + '.' + String(time.getDate());
+
+        const now = time.getTime();
+        let sunrise;
+        let sunset;
+        let isDarkTheme = false;
+
+        function setBodyClass() {
+          if (now > sunrise && now < sunset) {
+            isDarkTheme = false;
+            return;
+          }
+          document.body.classList.add('dark');
+          isDarkTheme = true;
+        }
+
+        if (date !== prev) {
+          fetch('https://api.ipgeolocation.io/astronomy?apiKey=5ed37d85103e4defa5df4c5298ed5215')
+            .then(res => res.json())
+            .then(data => {
+              sunrise = data.sunrise.split(':').map(Number);
+              sunset = data.sunset.split(':').map(Number);
+            })
+            .catch(() => {
+              sunrise = [7, 0];
+              sunset = [19, 0];
+            })
+            .finally(() => {
+              sunrise = time.setHours(sunrise[0], sunrise[1], 0);
+              sunset = time.setHours(sunset[0], sunset[1], 0);
+              setBodyClass();
+              localStorage.setItem('sunrise', sunrise);
+              localStorage.setItem('sunset', sunset);
+            });
+          localStorage.setItem('date', date);
+        } else {
+          sunrise = Number(localStorage.getItem('sunrise'));
+          sunset = Number(localStorage.getItem('sunset'));
+          setBodyClass();
+        }
+      }
+    </script>
+  </head>
+  <body class="single">
+    <script>
+      setTheme();
+    </script>
+    <header class="header">
+      <nav class="nav">
+        <p class="logo"><a href="https://inatear.github.io/">鹹魚部落格</a></p>
+        <ul class="menu">
+          <li>
+            <a href="/posts/">Posts</a>
+          </li>
+          <li>
+            <a href="/categories/">Categories</a>
+          </li>
+          <li>
+            <a href="/tags/">Tags</a>
+          </li>
+          <li>
+            <a href="/about/">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">如何在Win10啟動正常PostgreSQL</h1>
+    <div class="post-meta">一隻鹹魚 · 2020-12-21</div>
+  </header>
+  <div class="post-content"><h1 id="在win10安裝postgresql-1015-1後無法正常啟動">在Win10安裝PostgreSQL 10.15-1後，無法正常啟動</h1>
+<ol>
+<li>
+<p>不要安裝在Program files目錄下（有半形空白），改安裝在C槽目錄下(C:\PostgreSQL)。</p>
+</li>
+<li>
+<p>為PostgreSQL建立一組專用帳號postgres，設定為系統管理員。</p>
+<pre><code>net user
+net user postgres postgres /add
+</code></pre></li>
+<li>
+<p>在環境變數 PATH 設定 C:\PostgreSQL\10\bin 目錄。</p>
+</li>
+<li>
+<p>初始化資料庫。</p>
+<pre><code>initdb -D C:\PostgreDATA -E UTF8
+</code></pre></li>
+<li>
+<p>啟動PostgreSQL。</p>
+<pre><code>pg_ctl -D C:\PostgreDATA -l C:\PostgreDATA\logfile.txt start
+</code></pre></li>
+<li>
+<p>設定PostgreSQL管理員帳號密碼。</p>
+<pre><code>psql postgres
+create user root with superuser password 'password';
+create user postgres with superuser password 'password';
+</code></pre></li>
+<li>
+<p>匯入資料庫。</p>
+<pre><code>CREATE DATABASE dbname;
+psql dbname &lt; dbname.bak
+</code></pre></li>
+</ol>
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://inatear.github.io/tags/%E6%95%99%E5%AD%B8">教學</a></li>
+      <li><a href="https://inatear.github.io/tags/win10">Win10</a></li>
+      <li><a href="https://inatear.github.io/tags/postgresql">PostgreSQL</a></li>
+    </ul>
+  </footer>
+  
+</article></main>
+<footer class="footer">
+  <span>&copy; 2020 <a href="https://inatear.github.io/">鹹魚部落格</a></span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+  <span>&middot;</span>
+  Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+</footer>
+<script src="https://inatear.github.io/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-168026085-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+        'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+</body>
+</html>
+
+
+
+<script src="https://utteranc.es/client.js"
+  repo="inatear/inatear.github.io"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>

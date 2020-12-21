@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-tw">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>設定Apache Web Server Proxy功能 - 鹹魚部落格</title>
+    
+    <meta name="description" content="設定Apache Web Server Proxy功能 安裝apache web server yum -y install httpd httpd-tools 安裝並啟動apach">
+    <meta name="author" content="一隻鹹魚">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300&display=swap" rel="stylesheet">
+    <link href="https://inatear.github.io/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://inatear.github.io/style.css" rel="stylesheet">
+    <link href="https://inatear.github.io/custom.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://inatear.github.io/apple-touch-icon.png">
+    <link rel="icon" href="https://inatear.github.io/favicon.ico">
+    <meta name="generator" content="Hugo 0.71.1" />
+    
+    
+    
+    <script>
+      function setTheme() {
+        const time = new Date();
+
+        const prev = localStorage.getItem('date');
+        const date = String(time.getMonth() + 1) + '.' + String(time.getDate());
+
+        const now = time.getTime();
+        let sunrise;
+        let sunset;
+        let isDarkTheme = false;
+
+        function setBodyClass() {
+          if (now > sunrise && now < sunset) {
+            isDarkTheme = false;
+            return;
+          }
+          document.body.classList.add('dark');
+          isDarkTheme = true;
+        }
+
+        if (date !== prev) {
+          fetch('https://api.ipgeolocation.io/astronomy?apiKey=5ed37d85103e4defa5df4c5298ed5215')
+            .then(res => res.json())
+            .then(data => {
+              sunrise = data.sunrise.split(':').map(Number);
+              sunset = data.sunset.split(':').map(Number);
+            })
+            .catch(() => {
+              sunrise = [7, 0];
+              sunset = [19, 0];
+            })
+            .finally(() => {
+              sunrise = time.setHours(sunrise[0], sunrise[1], 0);
+              sunset = time.setHours(sunset[0], sunset[1], 0);
+              setBodyClass();
+              localStorage.setItem('sunrise', sunrise);
+              localStorage.setItem('sunset', sunset);
+            });
+          localStorage.setItem('date', date);
+        } else {
+          sunrise = Number(localStorage.getItem('sunrise'));
+          sunset = Number(localStorage.getItem('sunset'));
+          setBodyClass();
+        }
+      }
+    </script>
+  </head>
+  <body class="single">
+    <script>
+      setTheme();
+    </script>
+    <header class="header">
+      <nav class="nav">
+        <p class="logo"><a href="https://inatear.github.io/">鹹魚部落格</a></p>
+        <ul class="menu">
+          <li>
+            <a href="/posts/">Posts</a>
+          </li>
+          <li>
+            <a href="/categories/">Categories</a>
+          </li>
+          <li>
+            <a href="/tags/">Tags</a>
+          </li>
+          <li>
+            <a href="/about/">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">設定Apache Web Server Proxy功能</h1>
+    <div class="post-meta">一隻鹹魚 · 2020-12-21</div>
+  </header>
+  <div class="post-content"><h1 id="設定apache-web-server-proxy功能">設定Apache Web Server Proxy功能</h1>
+<h3 id="安裝apache-web-server">安裝apache web server</h3>
+<pre><code>yum -y install httpd httpd-tools
+</code></pre><h3 id="安裝並啟動apache-web-server服務">安裝並啟動apache web server服務</h3>
+<pre><code>systemctl start httpd.service
+systemctl enable httpd.service
+</code></pre><h3 id="開啟防火牆80連接埠">開啟防火牆80連接埠</h3>
+<pre><code>firewall-cmd --permanent --add-service=http
+firewall-cmd --reload
+</code></pre><h3 id="確認web-server是否安裝ajp元件">確認web server是否安裝AJP元件</h3>
+<pre><code>apachectl -M | grep ajp
+-&gt;proxy_ajp_module (shared)
+</code></pre><h3 id="開啟apache-tomcat-server-ajp-connector">開啟apache tomcat server AJP Connector</h3>
+<pre><code>    &lt;Connector protocol=&quot;AJP/1.3&quot;
+               address=&quot;::1&quot;
+               port=&quot;8009&quot;
+               redirectPort=&quot;8443&quot; secretRequired=&quot;false&quot;/&gt;
+</code></pre><h3 id="設定proxy-server">設定Proxy Server</h3>
+<ol>
+<li>
+<p>新增proxy_ajp.conf</p>
+</li>
+<li>
+<p>設定內容</p>
+<pre><code>&lt;VirtualHost ServerIP:80&gt;
+  ServerName ServerIP
+   
+  ProxyRequests Off
+  ProxyPass /ProjName ajp://localhost:8009/ProjName
+  ProxyPassReverse /ProjName ajp://localhost:8009/ProjName
+  ProxyPass / http://localhost:3000/
+  ProxyPassReverse / http://localhost:3000/
+&lt;/VirtualHost&gt;
+</code></pre></li>
+<li>
+<p>檢查設定內容的語法是否正確</p>
+<pre><code>apachectl configtest
+systemctl restart httpd
+</code></pre></li>
+</ol>
+<h3 id="trouble-shooting">Trouble Shooting</h3>
+<pre><code>setsebool -P httpd_can_network_connect 1
+</code></pre></div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://inatear.github.io/tags/%E6%95%99%E5%AD%B8">教學</a></li>
+      <li><a href="https://inatear.github.io/tags/apache">Apache</a></li>
+      <li><a href="https://inatear.github.io/tags/web">Web</a></li>
+      <li><a href="https://inatear.github.io/tags/httpd">httpd</a></li>
+      <li><a href="https://inatear.github.io/tags/codimd">CodiMD&#34;</a></li>
+      <li><a href="https://inatear.github.io/tags/centos">CentOS</a></li>
+    </ul>
+  </footer>
+  
+</article></main>
+<footer class="footer">
+  <span>&copy; 2020 <a href="https://inatear.github.io/">鹹魚部落格</a></span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+  <span>&middot;</span>
+  Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+</footer>
+<script src="https://inatear.github.io/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-168026085-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+        'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+</body>
+</html>
+
+
+
+<script src="https://utteranc.es/client.js"
+  repo="inatear/inatear.github.io"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>

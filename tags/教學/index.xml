@@ -6,10 +6,37 @@
     <description>Recent content in 教學 on 鹹魚部落格</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-tw</language>
-    <lastBuildDate>Sun, 31 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>如何在Win10啟動正常PostgreSQL</title>
+      <link>https://inatear.github.io/posts/tech/109-12-21_installpostgresql/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/posts/tech/109-12-21_installpostgresql/</guid>
+      <description>在Win10安裝PostgreSQL 10.15-1後，無法正常啟動 不要安裝在Prog</description>
+    </item>
+    
+    <item>
+      <title>安裝CodiMD 2.2.0</title>
+      <link>https://inatear.github.io/posts/tech/109-12-21_installcodimd/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/posts/tech/109-12-21_installcodimd/</guid>
+      <description>在CentOS 8上安裝CodiMD 2.2.0 CodiMD分新舊版 舊版在github https://github.com/hackmdio/codimd 新版需另</description>
+    </item>
+    
+    <item>
+      <title>設定Apache Web Server Proxy功能</title>
+      <link>https://inatear.github.io/posts/tech/109-12-21_setproxyserver/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://inatear.github.io/posts/tech/109-12-21_setproxyserver/</guid>
+      <description>設定Apache Web Server Proxy功能 安裝apache web server yum -y install httpd httpd-tools 安裝並啟動apach</description>
+    </item>
     
     <item>
       <title>如何設定讓Toad連到oracle 10g資料庫</title>

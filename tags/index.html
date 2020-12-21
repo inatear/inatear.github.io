@@ -32,10 +32,15 @@
         const now = time.getTime();
         let sunrise;
         let sunset;
+        let isDarkTheme = false;
 
         function setBodyClass() {
-          if (now > sunrise && now < sunset) return;
+          if (now > sunrise && now < sunset) {
+            isDarkTheme = false;
+            return;
+          }
           document.body.classList.add('dark');
+          isDarkTheme = true;
         }
 
         if (date !== prev) {
@@ -97,15 +102,29 @@
     <header class="tags-entry">
         <ul class="cloud">
         
+            <li><a href="https://inatear.github.io/tags/apache/">Apache <span style="font-size: xx-small;">(1)</span></a></li>
+        
+            <li><a href="https://inatear.github.io/tags/centos/">CentOS <span style="font-size: xx-small;">(2)</span></a></li>
+        
+            <li><a href="https://inatear.github.io/tags/codimd/">CodiMD <span style="font-size: xx-small;">(2)</span></a></li>
+        
+            <li><a href="https://inatear.github.io/tags/httpd/">httpd <span style="font-size: xx-small;">(1)</span></a></li>
+        
             <li><a href="https://inatear.github.io/tags/hugo/">Hugo <span style="font-size: xx-small;">(1)</span></a></li>
         
             <li><a href="https://inatear.github.io/tags/oracle-10g/">Oracle 10g <span style="font-size: xx-small;">(1)</span></a></li>
         
+            <li><a href="https://inatear.github.io/tags/postgresql/">PostgreSQL <span style="font-size: xx-small;">(1)</span></a></li>
+        
             <li><a href="https://inatear.github.io/tags/toad/">Toad <span style="font-size: xx-small;">(1)</span></a></li>
+        
+            <li><a href="https://inatear.github.io/tags/web/">Web <span style="font-size: xx-small;">(1)</span></a></li>
+        
+            <li><a href="https://inatear.github.io/tags/win10/">Win10 <span style="font-size: xx-small;">(1)</span></a></li>
         
             <li><a href="https://inatear.github.io/tags/%E5%B7%A5%E4%BD%9C/">工作 <span style="font-size: xx-small;">(4)</span></a></li>
         
-            <li><a href="https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/">教學 <span style="font-size: xx-small;">(2)</span></a></li>
+            <li><a href="https://inatear.github.io/tags/%E6%95%99%E5%AD%B8/">教學 <span style="font-size: xx-small;">(5)</span></a></li>
         
             <li><a href="https://inatear.github.io/tags/%E7%94%9F%E6%B4%BB/">生活 <span style="font-size: xx-small;">(5)</span></a></li>
         

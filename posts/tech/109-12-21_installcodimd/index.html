@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-tw">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>安裝CodiMD 2.2.0 - 鹹魚部落格</title>
+    
+    <meta name="description" content="在CentOS 8上安裝CodiMD 2.2.0 CodiMD分新舊版 舊版在github https://github.com/hackmdio/codimd 新版需另">
+    <meta name="author" content="一隻鹹魚">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300&display=swap" rel="stylesheet">
+    <link href="https://inatear.github.io/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://inatear.github.io/style.css" rel="stylesheet">
+    <link href="https://inatear.github.io/custom.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://inatear.github.io/apple-touch-icon.png">
+    <link rel="icon" href="https://inatear.github.io/favicon.ico">
+    <meta name="generator" content="Hugo 0.71.1" />
+    
+    
+    
+    <script>
+      function setTheme() {
+        const time = new Date();
+
+        const prev = localStorage.getItem('date');
+        const date = String(time.getMonth() + 1) + '.' + String(time.getDate());
+
+        const now = time.getTime();
+        let sunrise;
+        let sunset;
+        let isDarkTheme = false;
+
+        function setBodyClass() {
+          if (now > sunrise && now < sunset) {
+            isDarkTheme = false;
+            return;
+          }
+          document.body.classList.add('dark');
+          isDarkTheme = true;
+        }
+
+        if (date !== prev) {
+          fetch('https://api.ipgeolocation.io/astronomy?apiKey=5ed37d85103e4defa5df4c5298ed5215')
+            .then(res => res.json())
+            .then(data => {
+              sunrise = data.sunrise.split(':').map(Number);
+              sunset = data.sunset.split(':').map(Number);
+            })
+            .catch(() => {
+              sunrise = [7, 0];
+              sunset = [19, 0];
+            })
+            .finally(() => {
+              sunrise = time.setHours(sunrise[0], sunrise[1], 0);
+              sunset = time.setHours(sunset[0], sunset[1], 0);
+              setBodyClass();
+              localStorage.setItem('sunrise', sunrise);
+              localStorage.setItem('sunset', sunset);
+            });
+          localStorage.setItem('date', date);
+        } else {
+          sunrise = Number(localStorage.getItem('sunrise'));
+          sunset = Number(localStorage.getItem('sunset'));
+          setBodyClass();
+        }
+      }
+    </script>
+  </head>
+  <body class="single">
+    <script>
+      setTheme();
+    </script>
+    <header class="header">
+      <nav class="nav">
+        <p class="logo"><a href="https://inatear.github.io/">鹹魚部落格</a></p>
+        <ul class="menu">
+          <li>
+            <a href="/posts/">Posts</a>
+          </li>
+          <li>
+            <a href="/categories/">Categories</a>
+          </li>
+          <li>
+            <a href="/tags/">Tags</a>
+          </li>
+          <li>
+            <a href="/about/">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">安裝CodiMD 2.2.0</h1>
+    <div class="post-meta">一隻鹹魚 · 2020-12-21</div>
+  </header>
+  <div class="post-content"><h1 id="在centos-8上安裝codimd-220">在CentOS 8上安裝CodiMD 2.2.0</h1>
+<h3 id="codimd分新舊版">CodiMD分新舊版</h3>
+<h5 id="舊版在github">舊版在github</h5>
+<pre><code>https://github.com/hackmdio/codimd
+</code></pre><h5 id="新版需另從網站下載壓縮檔">新版需另從網站下載壓縮檔</h5>
+<pre><code>https://github.com/hackmdio/codimd/releases/tag/2.2.0
+</code></pre><h3 id="安裝相依套件">安裝相依套件</h3>
+<pre><code>yum install curl git
+</code></pre><h3 id="安裝-nodejs--npm">安裝 nodejs &amp; npm</h3>
+<pre><code>yum install epel-release
+yum install nodejs
+</code></pre><h3 id="clone-hackmd-git安裝舊版才需要">clone hackmd git（安裝舊版才需要）</h3>
+<pre><code>cd /opt
+git clone https://github.com/hackmdio/hackmd.git
+</code></pre><h3 id="安裝-codimd">安裝 CodiMD</h3>
+<h5 id="舊版">舊版</h5>
+<pre><code>cd /opt/hackmd
+cp config.json.example config.json
+bin/setup
+</code></pre><h5 id="新版">新版</h5>
+<p>將 codimd-2.2.0.zip 解壓縮後，目錄改為codimd，上傳至 /opt 目錄。</p>
+<pre><code>cd /opt/codimd
+cp config.json.example config.json
+bin/setup
+</code></pre><h3 id="codimd-postgresql-連線">CodiMD PostgreSQL 連線</h3>
+<p>編輯初始化檔案 vi /opt/hackmd/.sequelizerc</p>
+<pre><code>module.exports = {
+  config: path.resolve('config.js'),
+  'migrations-path': path.resolve('lib', 'migrations'),
+  'models-path': path.resolve('lib', 'models'),
+  'url': 'postgres://postgres:password@localhost:5432/codimdDB'
+}
+</code></pre><h3 id="configjson-設定">config.json 設定</h3>
+<p>啟動服務</p>
+<pre><code>cd /opt/codimd
+npm run build
+node_modules/.bin/sequelize db:migrate
+
+export NODE_ENV=production
+npm start
+</code></pre><h3 id="安裝-postgresql-資料庫">安裝 PostgreSQL 資料庫</h3>
+<pre><code>yum install postgresql-server postgresql-contrib
+postgresql-setup initdb
+systemctl start postgresql
+</code></pre><ul>
+<li>進入 PostgreSQL：<code>sudo -u postgres psql</code></li>
+<li>變更密碼: <code>\password //password</code></li>
+<li>查詢 Database：<code>\l</code>&gt;</li>
+<li>建立 CodiMD的Database：<code>CREATE DATABASE codimdDB OWNER postgres;</code></li>
+<li>查詢 user：<code>\du</code></li>
+<li>quit：<code>\q</code></li>
+</ul>
+<h3 id="pg_hbaconf-設定">pg_hba.conf 設定</h3>
+<pre><code>cd /var/lib/pgsql/data
+ls -l pg_hba*
+cp pg_hba.conf pg_hba.conf.org
+</code></pre><p>設定如下：</p>
+<pre><code># PostgreSQL Client Authentication Configuration File&quot;
+# ===================================================&quot;
+local all all              trust
+host  all all 127.0.0.1/32 trust
+host  all all ::1/128      trust
+</code></pre><h3 id="啟動-codimd-服務">啟動 CodiMD 服務</h3>
+<pre><code>vi /etc/systemd/system/codimd.service
+codimd.service
+systemctl --system daemon-reload
+systemctl enable codimd
+systemctl start/stop/status codimd
+</code></pre><h3 id="設定防火牆">設定防火牆</h3>
+<pre><code>systemctl status firewalld
+netstat -tlnp
+firewall-cmd --zone=public --add-port=3000/tcp --permanent
+firewall-cmd --reload
+firewall-cmd --zone=public --list-all
+</code></pre><h3 id="參考網址">參考網址</h3>
+<p><a href="https://spicyboyd.blogspot.com/2019/03/linux-hackmd-codimd.html">https://spicyboyd.blogspot.com/2019/03/linux-hackmd-codimd.html</a></p>
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://inatear.github.io/tags/%E6%95%99%E5%AD%B8">教學</a></li>
+      <li><a href="https://inatear.github.io/tags/centos">CentOS</a></li>
+      <li><a href="https://inatear.github.io/tags/codimd">CodiMD</a></li>
+    </ul>
+  </footer>
+  
+</article></main>
+<footer class="footer">
+  <span>&copy; 2020 <a href="https://inatear.github.io/">鹹魚部落格</a></span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+  <span>&middot;</span>
+  Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+</footer>
+<script src="https://inatear.github.io/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-168026085-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+        'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+</body>
+</html>
+
+
+
+<script src="https://utteranc.es/client.js"
+  repo="inatear/inatear.github.io"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
