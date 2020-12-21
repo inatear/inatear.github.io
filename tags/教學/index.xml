@@ -35,7 +35,7 @@
       <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://inatear.github.io/posts/tech/109-12-21_setproxyserver/</guid>
-      <description>設定Apache Web Server Proxy功能 安裝apache web server yum -y install httpd httpd-tools 安裝並啟動apach</description>
+      <description>安裝apache web server yum -y install httpd httpd-tools 安裝並啟動apache web server服務 systemctl start httpd.service systemctl enable httpd.service 開</description>
     </item>
     
     <item>
