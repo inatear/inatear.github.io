@@ -124,22 +124,6 @@ bin/setup
 <pre><code>cd /opt/codimd
 cp config.json.example config.json
 bin/setup
-</code></pre><h3 id="codimd-postgresql-連線">CodiMD PostgreSQL 連線</h3>
-<p>編輯初始化檔案 vi /opt/hackmd/.sequelizerc</p>
-<pre><code>module.exports = {
-  config: path.resolve('config.js'),
-  'migrations-path': path.resolve('lib', 'migrations'),
-  'models-path': path.resolve('lib', 'models'),
-  'url': 'postgres://postgres:password@localhost:5432/codimdDB'
-}
-</code></pre><h3 id="configjson-設定">config.json 設定</h3>
-<p>啟動服務</p>
-<pre><code>cd /opt/codimd
-npm run build
-node_modules/.bin/sequelize db:migrate
-
-export NODE_ENV=production
-npm start
 </code></pre><h3 id="安裝-postgresql-資料庫">安裝 PostgreSQL 資料庫</h3>
 <pre><code>yum install postgresql-server postgresql-contrib
 postgresql-setup initdb
@@ -162,18 +146,34 @@ cp pg_hba.conf pg_hba.conf.org
 local all all              trust
 host  all all 127.0.0.1/32 trust
 host  all all ::1/128      trust
-</code></pre><h3 id="啟動-codimd-服務">啟動 CodiMD 服務</h3>
-<pre><code>vi /etc/systemd/system/codimd.service
-codimd.service
-systemctl --system daemon-reload
-systemctl enable codimd
-systemctl start/stop/status codimd
+</code></pre><h3 id="codimd-postgresql-連線">CodiMD PostgreSQL 連線</h3>
+<p>編輯初始化檔案 vi /opt/hackmd/.sequelizerc</p>
+<pre><code>module.exports = {
+  config: path.resolve('config.js'),
+  'migrations-path': path.resolve('lib', 'migrations'),
+  'models-path': path.resolve('lib', 'models'),
+  'url': 'postgres://postgres:password@localhost:5432/codimdDB'
+}
+</code></pre><h3 id="configjson-設定">config.json 設定</h3>
+<p>啟動服務</p>
+<pre><code>cd /opt/codimd
+npm run build
+node_modules/.bin/sequelize db:migrate
+
+export NODE_ENV=production
+npm start
 </code></pre><h3 id="設定防火牆">設定防火牆</h3>
 <pre><code>systemctl status firewalld
 netstat -tlnp
 firewall-cmd --zone=public --add-port=3000/tcp --permanent
 firewall-cmd --reload
 firewall-cmd --zone=public --list-all
+</code></pre><h3 id="啟動-codimd-服務">啟動 CodiMD 服務</h3>
+<pre><code>vi /etc/systemd/system/codimd.service
+codimd.service
+systemctl --system daemon-reload
+systemctl enable codimd
+systemctl start/stop/status codimd
 </code></pre><h3 id="參考網址">參考網址</h3>
 <p><a href="https://spicyboyd.blogspot.com/2019/03/linux-hackmd-codimd.html">https://spicyboyd.blogspot.com/2019/03/linux-hackmd-codimd.html</a></p>
 </div>
