@@ -7,7 +7,7 @@
     
     <title>安裝CodiMD 2.2.0 - 鹹魚部落格</title>
     
-    <meta name="description" content="在CentOS 8上安裝CodiMD 2.2.0 CodiMD分新舊版 舊版在github https://github.com/hackmdio/codimd 新版需另">
+    <meta name="description" content="在CentOS 8上安裝CodiMD 2.2.0 CodiMD分新舊版（新版可直接插入圖片） 舊版在">
     <meta name="author" content="一隻鹹魚">
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300&display=swap" rel="stylesheet">
@@ -100,8 +100,8 @@
     <h1 class="post-title">安裝CodiMD 2.2.0</h1>
     <div class="post-meta">一隻鹹魚 · 2020-12-21</div>
   </header>
-  <div class="post-content"><h2 id="在centos-8上安裝codimd-220">在CentOS 8上安裝CodiMD 2.2.0</h2>
-<h3 id="codimd分新舊版">CodiMD分新舊版</h3>
+  <div class="post-content"><h3 id="在centos-8上安裝codimd-220">在CentOS 8上安裝CodiMD 2.2.0</h3>
+<h3 id="codimd分新舊版新版可直接插入圖片">CodiMD分新舊版（新版可直接插入圖片）</h3>
 <h5 id="舊版在github">舊版在github</h5>
 <pre><code>https://github.com/hackmdio/codimd
 </code></pre><h5 id="新版需另從網站下載壓縮檔">新版需另從網站下載壓縮檔</h5>
@@ -111,7 +111,7 @@
 </code></pre><h3 id="安裝-nodejs--npm">安裝 nodejs &amp; npm</h3>
 <pre><code>yum install epel-release
 yum install nodejs
-</code></pre><h3 id="clone-hackmd-git安裝舊版才需要">clone hackmd git（安裝舊版才需要）</h3>
+</code></pre><h3 id="clone-hackmd-git舊版才需要">clone hackmd git（舊版才需要）</h3>
 <pre><code>cd /opt
 git clone https://github.com/hackmdio/hackmd.git
 </code></pre><h3 id="安裝-codimd">安裝 CodiMD</h3>
@@ -132,7 +132,7 @@ systemctl start postgresql
 <li>進入 PostgreSQL：<code>sudo -u postgres psql</code></li>
 <li>變更密碼: <code>\password //password</code></li>
 <li>查詢 Database：<code>\l</code>&gt;</li>
-<li>建立 CodiMD的Database：<code>CREATE DATABASE codimdDB OWNER postgres;</code></li>
+<li>建立 CodiMD的Database：<code>CREATE DATABASE $codimdDB OWNER postgres;</code></li>
 <li>查詢 user：<code>\du</code></li>
 <li>quit：<code>\q</code></li>
 </ul>
@@ -147,22 +147,43 @@ local all all              trust
 host  all all 127.0.0.1/32 trust
 host  all all ::1/128      trust
 </code></pre><h3 id="codimd-postgresql-連線">CodiMD PostgreSQL 連線</h3>
-<p>編輯初始化檔案 vi /opt/hackmd/.sequelizerc</p>
+<p>編輯初始化檔案 vi /opt/hackmd/.sequelizerc 或 /opt/codimd/.sequelizerc</p>
 <pre><code>module.exports = {
   config: path.resolve('config.js'),
   'migrations-path': path.resolve('lib', 'migrations'),
   'models-path': path.resolve('lib', 'models'),
-  'url': 'postgres://postgres:password@localhost:5432/codimdDB'
+  'url': 'postgres://postgres:password@localhost:5432/$codimdDB'
 }
 </code></pre><h3 id="configjson-設定">config.json 設定</h3>
+<ol>
+<li>
+<p>設定config.json</p>
+<pre><code>{
+    &quot;production&quot;: {
+        &quot;loglevel&quot;: &quot;info&quot;,
+        &quot;db&quot;: {
+            &quot;username&quot;: &quot;postgres&quot;,
+            &quot;password&quot;: &quot;password&quot;,
+            &quot;database&quot;: &quot;dbname&quot;,
+            &quot;host&quot;: &quot;localhost&quot;,
+            &quot;port&quot;: &quot;5432&quot;,
+            &quot;dialect&quot;: &quot;postgres&quot;
+        },
+        &quot;linkifyHeaderStyle&quot;: &quot;gfm&quot;
+    }
+}
+</code></pre></li>
+<li>
 <p>啟動服務</p>
-<pre><code>cd /opt/codimd
+<pre><code>cd /opt/codimd 或 /opt/hackmd
 npm run build
 node_modules/.bin/sequelize db:migrate
-
+   
 export NODE_ENV=production
 npm start
-</code></pre><h3 id="設定防火牆">設定防火牆</h3>
+</code></pre></li>
+</ol>
+<h3 id="設定防火牆">設定防火牆</h3>
 <pre><code>systemctl status firewalld
 netstat -tlnp
 firewall-cmd --zone=public --add-port=3000/tcp --permanent
@@ -170,11 +191,21 @@ firewall-cmd --reload
 firewall-cmd --zone=public --list-all
 </code></pre><h3 id="啟動-codimd-服務">啟動 CodiMD 服務</h3>
 <pre><code>vi /etc/systemd/system/codimd.service
-codimd.service
 systemctl --system daemon-reload
 systemctl enable codimd
 systemctl start/stop/status codimd
-</code></pre><h3 id="參考網址">參考網址</h3>
+</code></pre><h3 id="設定上傳圖片目錄新版才需要">設定上傳圖片目錄（新版才需要）</h3>
+<ol>
+<li>
+<p>預設目錄 /opt/codimd/public/uploads</p>
+</li>
+<li>
+<p>設定連結其它目錄</p>
+<pre><code>mkdir /uploads
+ln -s /uploads /opt/codimd/public/uploads
+</code></pre></li>
+</ol>
+<h3 id="參考網址">參考網址</h3>
 <p><a href="https://spicyboyd.blogspot.com/2019/03/linux-hackmd-codimd.html">https://spicyboyd.blogspot.com/2019/03/linux-hackmd-codimd.html</a></p>
 </div>
   <footer class="post-footer">

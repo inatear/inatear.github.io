@@ -119,7 +119,11 @@ firewall-cmd --reload
 </code></pre><h3 id="設定proxy-server">設定Proxy Server</h3>
 <ol>
 <li>
-<p>新增proxy_ajp.conf</p>
+<p>確認/etc/httpd/conf/httpd.conf中，含有以下設定</p>
+<pre><code>IncludeOptional conf.d/*.conf
+</code></pre></li>
+<li>
+<p>新增設定檔 /etc/httpd/conf.d/proxy_ajp.conf</p>
 </li>
 <li>
 <p>設定內容</p>
@@ -148,7 +152,6 @@ systemctl restart httpd
       <li><a href="https://inatear.github.io/tags/apache">Apache</a></li>
       <li><a href="https://inatear.github.io/tags/web">Web</a></li>
       <li><a href="https://inatear.github.io/tags/httpd">httpd</a></li>
-      <li><a href="https://inatear.github.io/tags/codimd">CodiMD&#34;</a></li>
       <li><a href="https://inatear.github.io/tags/centos">CentOS</a></li>
     </ul>
   </footer>

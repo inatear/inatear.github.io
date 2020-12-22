@@ -128,9 +128,13 @@ create user root with superuser password 'password';
 create user postgres with superuser password 'password';
 </code></pre></li>
 <li>
+<p>匯出資料庫。</p>
+<pre><code>pg_dump $dbname -U postgres -f $bakfilename.bak
+</code></pre></li>
+<li>
 <p>匯入資料庫。</p>
-<pre><code>CREATE DATABASE dbname;
-psql dbname &lt; dbname.bak
+<pre><code>CREATE DATABASE $dbname;
+psql $dbname &lt; $bakfilename.bak
 </code></pre></li>
 </ol>
 </div>
