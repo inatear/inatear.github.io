@@ -138,14 +138,19 @@ firewall-cmd --reload
 &lt;/VirtualHost&gt;
 </code></pre></li>
 <li>
-<p>檢查設定內容的語法是否正確</p>
+<p>檢查設定內容的語法是否正確，若無錯誤重開服務</p>
 <pre><code>apachectl configtest
 systemctl restart httpd
 </code></pre></li>
 </ol>
 <h3 id="trouble-shooting">Trouble Shooting</h3>
+<ol>
+<li>
+<p>若導向無法成功，請檢查 /etc/httpd/logs/error_log，依錯誤訊息解決問題，例如有時需要打開其它設定：</p>
 <pre><code>setsebool -P httpd_can_network_connect 1
-</code></pre></div>
+</code></pre></li>
+</ol>
+</div>
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://inatear.github.io/tags/%E6%95%99%E5%AD%B8">教學</a></li>
